@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+* {
+    font-family: "League Spartan", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-size: 20px;
+}
+body {
+    font-family: "League Spartan", sans-serif;
+    font-size: 20px;
+}
+
+:root {
+
+    --Very_Dark_Magenta: #191919;
+    --Soft_Pink: #ee68a4;
+
+
+    --Dark_Grayish_Magenta: #937b92;
+    --Light_Grayish_Magenta: #f7f2f7;
+    --White: hsl(0, 0%, 100%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    position: relative;
+}
+#Bloque {
+    top: 100px;
+    position: relative;
+}
+#ContainerBloque {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#ContainerBloque .calificacion {
+    background-color: #f6f6f6;  
+    border: 1px solid rgb(236, 236, 236);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+#ContainerBloque .calificacion span:nth-child(2) {
+    font-family: 15px;
+    font-weight: 700;
+    color: #502050;
+
+}
+
+.BloqueSec-v1 {
+    display: flex;
+    gap: 100px;
+}
+
+.articleText h1 {line-height: 60px;}
+
+.bloqueArticle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    & .containerCards {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid rgb(225, 225, 225);
+        overflow: hidden;
+        padding: 30px;
+        & .bloqueProfile {
+            display: flex;
+            & img {
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}
+
+.roleUSer {
+    color: #7698c5;
+}
+
+@media (max-width: 1000px) {
+    .BloqueSec-v1 {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+    #ContainerBloque .calificacion {
+        margin: 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #Bloque {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .bloqueArticle {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+    .bloqueArticle .containerCards {
+        margin: 0;
+    }
+
+}
+
+@media (max-width: 500px) {
+    *, body {
+        font-size: 15px;
+    }
+    .calificacion, #ContainerBloque, .ContainerBloque {
+        width: 100%;
+    }
+    .articleText h1 {
+        font-size: 50px;
+        line-height: 40px;
+        font-weight: 900;
+    }   
+    #Bloque {
+        top: 0;
+    }
+    .textParra  {
+        margin-top: 10px;
+    }
+}
