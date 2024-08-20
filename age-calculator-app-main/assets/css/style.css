@@ -126,9 +126,23 @@ input[type="number"] {
 
 @media (max-width: 600px) {
     .spanFlex input  {
-        width: 90px;
+        width: 100px;
     }
     .containerComponent {
         height: max-content;
+    }
+
+    .elemenent {
+        font-size: 50px;
+        & .numberText {
+            font-size: 60px;
+        }
+    }
+
+    .containerBloque1  {
+        gap: 15px;
+    }
+    .containerComponent {
+        zoom: 0.8;
     }
 }
