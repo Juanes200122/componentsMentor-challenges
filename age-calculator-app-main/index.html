@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Spectral | Age calculator app</title>
+</head>
+
+<body>
+    <style>
+        #alertWarning {
+            transition: top .3s ease;
+        }
+    </style>
+    <div class="containerComponent">
+        <div class="containerBloque1">
+            <span class="spanFlex">
+                <label for="DAY">Day</label>
+                <input placeholder="DD" type="text" id="DAY" pattern="\d{2}" title="Please enter a 2-digit day (01-31)" maxlength="2">
+            </span>
+            <span class="spanFlex">
+                <label for="MONTH">Month</label>
+                <input placeholder="MM" type="text" id="MONTH" pattern="\d{2}" title="Please enter a 2-digit month (01-12)" maxlength="2">
+            </span>
+            <span class="spanFlex">
+                <label for="YEAR">Year</label>
+                <input placeholder="YYYY" type="text" id="YEAR" pattern="\d{4}" title="Please enter a 4-digit year (e.g., 2024)" maxlength="4">
+            </span>
+            
+            <button class="absolute buttonConvert" id="buttonConvert">
+                <img src="assets/images/icon-arrow.svg" alt="">
+            </button>
+        </div>
+        <hr class="hr_line section">
+        <article class="containerBloque2">
+            <p class="elemenent"><span class="numberText upper" id="resultYear">- -</span> years</p>
+            <p class="elemenent"><span class="numberText upper" id="resultMonths">- -</span> months</p>
+            <p class="elemenent"><span class="numberText upper" id="resultDays">- -</span> days</p>
+        </article>
+    </div>
+
+    <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 absolute top-[-90px]" role="alert" id="alertWarning">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Informacion</span>
+        <div>
+          <span class="font-medium">¡Alerta de advertencia! </span><span id="mensajeALert"></span>
+        </div>
+    </div>
+
+
+      <script src="css_tailwindGlobal/script.js"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttonConvert = document.getElementById('buttonConvert');
+            const alertWarning = document.getElementById('alertWarning');
+            const mensajeALert = document.getElementById('mensajeALert');
+            
+            buttonConvert.addEventListener('click', function () {
+                const DAY = parseInt(document.getElementById('DAY').value, 10);
+                const MONTH = parseInt(document.getElementById('MONTH').value, 10);
+                const YEAR = parseInt(document.getElementById('YEAR').value, 10);
+    
+                // Validación de valores
+                if (isNaN(DAY) || DAY < 1 || DAY > 31) {
+                    showAlert('El Dia ingresado no corresponde a su formato');                      
+                    return;
+                }
+                if (isNaN(MONTH) || MONTH < 1 || MONTH > 12) {
+                    showAlert('El Mes ingresado no corresponde a su formato');
+                    return;
+                }
+                if (isNaN(YEAR) || YEAR < 1000 || YEAR > 9999) {
+                    showAlert('El Año ingresado no corresponde a su formato');
+                    return;
+                }
+    
+                const fechaIngresada = new Date(YEAR, MONTH - 1, DAY);
+                const fechaActual = new Date();
+    
+                // Cálculo de la diferencia
+                let diferenciaAnios = fechaActual.getFullYear() - fechaIngresada.getFullYear();
+                let diferenciaMeses = fechaActual.getMonth() - fechaIngresada.getMonth();
+                let diferenciaDias = fechaActual.getDate() - fechaIngresada.getDate();
+    
+                if (diferenciaDias < 0) {
+                    diferenciaDias += new Date(fechaActual.getFullYear(), fechaActual.getMonth(), 0).getDate();
+                    diferenciaMeses--;
+                }
+    
+                if (diferenciaMeses < 0) {
+                    diferenciaMeses += 12;
+                    diferenciaAnios--;
+                }
+    
+                document.getElementById('resultYear').textContent = diferenciaAnios;
+                document.getElementById('resultMonths').textContent = diferenciaMeses;
+                document.getElementById('resultDays').textContent = diferenciaDias;
+            });
+    
+            function showAlert(message) {
+                mensajeALert.textContent = message;
+                alertWarning.style.top = '20px';
+    
+                setTimeout(function() {
+                    alertWarning.style.top = '';                        
+                }, 3000);
+            }
+        });
+    </script>    
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    letter-spacing: 0;     
+    font-family: "Poppins", sans-serif;       
+}
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+label {
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 14px; 
+    font-weight: 500; 
+    color: #191919;
+    margin-bottom: 10px;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    background-color: hsl(0, 0%, 94%);
+    padding: 20px;
+}
+
+.containerComponent {
+    width: 700px;
+    height: 500px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 20px 20px 190px 20px;
+    padding: 50px;
+}
+
+.spanFlex {
+    display: flex;
+    flex-direction: column;
+}
+.spanFlex input {
+    width: 130px;
+    height: 55px;
+    border-radius: 5px;
+    border:  1px solid rgb(139, 139, 139);
+    font-size: 24px;
+    padding: 10px 15px;
+    font-weight: bold;    
+}
+.containerBloque1 {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.hr_line {
+    margin: 40px 0px;
+}
+.buttonConvert {
+    position: absolute;
+    right: 0;
+    bottom: -70px;
+    border-radius: 50%;
+    background-color: #191919;
+    border: none;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background .3s ease;
+
+    &:hover {
+        background-color: hsl(259, 100%, 65%);
+    }
+
+    & img {
+        width: 60%;
+    }
+}
+/* Quitar los botones de incremento/decremento en navegadores basados en WebKit (como Chrome y Safari) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Clase para aplicar el estilo */
+.no-spinner {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+}
+
+.containerBloque2 {
+    width: 100%;
+    height: calc(100% - 150px);
+}
+.elemenent {
+    font-size: 60px;
+    font-weight: 900;
+    color: #191919;
+    font-style: italic;
+    line-height: 80px;            
+
+    & .numberText {
+        color: hsl(259, 100%, 65%);
+        font-size: 70px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .spanFlex input  {
+        width: 90px;
+    }
+    .containerComponent {
+        height: max-content;
+    }
+}
