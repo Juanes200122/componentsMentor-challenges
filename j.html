@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumar y Restar</title>
+    <style>
+        /* Puedes añadir estilos si lo deseas */
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="addRest" id="addRest">
+        <img src="assets/images/icon-decrement-quantity.svg" alt="">
+        bajar
+    </button>
+    <span id="nextNumber">1</span>
+    <button class="addSum" id="addSum">
+        subir
+        <img src="assets/images/icon-increment-quantity.svg" alt="">
+    </button>
+
+    <script>
+        // Obtener referencias a los elementos
+        const decrementButton = document.getElementById('addRest');
+        const incrementButton = document.getElementById('addSum');
+        const numberSpan = document.getElementById('nextNumber');
+
+        // Definir la función para actualizar el número
+        function updateNumber(change) {
+            // Obtener el valor actual del span
+            let currentNumber = parseInt(numberSpan.textContent, 10);
+            // Actualizar el valor
+            currentNumber += change;
+            // Asegurarse de que el número no sea negativo
+            if (currentNumber < 1) currentNumber = 1;
+            // Establecer el nuevo valor en el span
+            numberSpan.textContent = currentNumber;
+        }
+
+        // Agregar los manejadores de eventos a los botones
+        decrementButton.addEventListener('click', function() {
+            updateNumber(-1);
+        });
+
+        incrementButton.addEventListener('click', function() {
+            updateNumber(1);
+        });
+    </script>
+</body>
+</html>
